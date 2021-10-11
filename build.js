@@ -5,8 +5,8 @@ import fetch from 'node-fetch';
 
 const OLD_TRAFFORD = 556;
 const TWO_HOURS = 7200;
-const TEMPLATE = 'template.ejs';
-const OUTPUT_FILE = 'build/index.html';
+const TEMPLATE = './template.ejs';
+const OUTPUT_FILE = './build/index.html';
 
 const URL = 'https://api-football-v1.p.rapidapi.com/v3/fixtures?season=2021&team=33&next=10';
 const headers = {
@@ -27,7 +27,7 @@ const build = async () => {
 		}));
 
 	const page = await ejs.renderFile(TEMPLATE, {fixtures}, {async: true})
-	await fs.mkdir('build', {recursive: true})
+	await fs.mkdir('./build', {recursive: true})
 	await fs.writeFile(OUTPUT_FILE, page)
 };
 build()
