@@ -1,6 +1,6 @@
 "use strict";
 import ejs from 'ejs'
-import fs  from 'fs/promises'
+import fs from 'fs/promises'
 import fetch from 'node-fetch';
 
 const OLD_TRAFFORD = 556;
@@ -13,16 +13,18 @@ const headers = {
 	'x-rapidapi-key': process.env.API_KEY,
 	'x-rapidapi-host': 'api-football-v1.p.rapidapi.com'
 }
+const TIMEZONE = {timeZone: 'Europe/London'};
+const TIME_SETTINGS = {...TIMEZONE, hour: '2-digit', minute: '2-digit'}
 const build = async () => {
 
-	const response = await fetch(URL, {headers}).then(r=>r.json())
+	const response = await fetch(URL, {headers}).then(r => r.json())
 
 	const fixtures = response.response
 		.filter(({fixture}) => fixture?.venue?.id === OLD_TRAFFORD)
 		.map(({fixture, teams}) => ({
-			date: new Date(fixture.timestamp * 1000).toLocaleDateString("en-GB"),
-			kickOff: new Date(fixture.timestamp * 1000).toLocaleTimeString("en-GB"),
-			onSite: new Date((fixture.timestamp - TWO_HOURS) * 1000).toLocaleTimeString("en-GB"),
+			date: new Date(fixture.timestamp * 1000).toLocaleDateString("en-GB", TIMEZONE),
+			kickOff: new Date(fixture.timestamp * 1000).toLocaleTimeString("en-GB", TIME_SETTINGS),
+			onSite: new Date((fixture.timestamp - TWO_HOURS) * 1000).toLocaleTimeString("en-GB", TIME_SETTINGS),
 			vs: teams.away.name
 		}));
 
