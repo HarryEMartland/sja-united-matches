@@ -7,6 +7,9 @@ provider:
   lambdaHashingVersion: '20201221'
   region: eu-west-2
 
+plugins:
+  - serverless-offline
+
 functions:
   hello:
     handler: handler.hello

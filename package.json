@@ -4,9 +4,11 @@
     "node-fetch": "^3.0.0"
   },
   "scripts": {
-    "serverless": "serverless"
+    "serverless": "serverless",
+    "dev": "serverless offline"
   },
   "devDependencies": {
-    "serverless": "^2.62.0"
+    "serverless": "^2.62.0",
+    "serverless-offline": "^8.2.0"
   }
 }
