@@ -8,7 +8,7 @@ const TWO_HOURS = 7200;
 const TEMPLATE = './template.ejs';
 const OUTPUT_FILE = './build/index.html';
 
-const URL = 'https://api-football-v1.p.rapidapi.com/v3/fixtures?season=2021&team=33&next=10';
+const URL = 'https://api-football-v1.p.rapidapi.com/v3/fixtures?season=2021&team=33&next=20';
 const headers = {
 	'x-rapidapi-key': process.env.API_KEY,
 	'x-rapidapi-host': 'api-football-v1.p.rapidapi.com'
