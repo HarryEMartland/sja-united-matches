@@ -4,11 +4,8 @@
     "node-fetch": "^3.0.0"
   },
   "scripts": {
-    "serverless": "serverless",
-    "dev": "serverless offline"
+    "build": "node build.js"
   },
   "devDependencies": {
-    "serverless": "^2.62.0",
-    "serverless-offline": "^8.2.0"
   }
 }

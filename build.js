@@ -1,5 +1,6 @@
 "use strict";
 const ejs = require('ejs')
+const fs = require('fs').promises
 
 const response = {
 	"get": "fixtures",
@@ -701,8 +702,9 @@ const response = {
 const OLD_TRAFFORD = 556;
 const TWO_HOURS = 7200;
 const TEMPLATE = __dirname + '/template.ejs';
+const OUTPUT_FILE = 'build/index.html';
 
-module.exports.hello = async (event) => {
+const build = async () => {
 
 	const fixtures = response.response
 		.filter(({fixture}) => fixture?.venue?.id === OLD_TRAFFORD)
@@ -713,9 +715,9 @@ module.exports.hello = async (event) => {
 			vs: teams.away.name
 		}));
 
-	return {
-		statusCode: 200,
-		headers: {'Content-Type': 'text/html',},
-		body: await ejs.renderFile(TEMPLATE, {fixtures}, {async: true}),
-	};
+
+	const page = await ejs.renderFile(TEMPLATE, {fixtures}, {async: true})
+	await fs.mkdir('build',{ recursive: true })
+	await fs.writeFile(OUTPUT_FILE, page)
 };
+build()
