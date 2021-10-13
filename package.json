@@ -2,6 +2,7 @@
   "type": "module",
   "dependencies": {
     "ejs": "^3.1.6",
+    "moment": "^2.29.1",
     "node-fetch": "^3.0.0"
   },
   "scripts": {
