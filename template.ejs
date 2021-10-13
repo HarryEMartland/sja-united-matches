@@ -10,10 +10,19 @@
 <body>
 <div class="container">
 
-    <div class="container">
+    <div class="container mt-3">
+
         <div class="row">
             <div class="column">
-                <h1 class="mt-3">Upcoming Games</h1>
+                <div class="alert alert-primary" role="alert">
+                    To add all games to your calendar click <a href="https://calendar.manutd.com/index.php?c=sync">here</a>.
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <h1 class="">Upcoming Games</h1>
             </div>
         </div>
         <% fixtures.forEach(({kickOff, date, onSite, vs, gCalLink, bookLink})=>{ %>
