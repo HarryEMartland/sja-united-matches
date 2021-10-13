@@ -2,7 +2,7 @@
 import ejs from 'ejs'
 import fs from 'fs/promises'
 import fetch from 'node-fetch';
-import moment from 'moment'
+import moment from 'moment-timezone'
 
 const OLD_TRAFFORD = 556;
 const TWO_HOURS = 7200;
@@ -21,7 +21,7 @@ const TIME_SETTINGS = {...TIMEZONE, hour: '2-digit', minute: '2-digit'}
 function buildGCalLink(teams, fixture) {
 	return `https://www.google.com/calendar/render?action=TEMPLATE&\
 			text=SJA United vs ${teams.away.name}&\
-			dates=${moment((fixture.timestamp - TWO_HOURS) * 1000).format('YYYYMMDDTHHmmss')}%2F${moment((fixture.timestamp + TWO_HOURS) * 1000).format('YYYYMMDDTHHmmss')}\
+			dates=${moment((fixture.timestamp - TWO_HOURS) * 1000).tz('Europe/London').format('YYYYMMDDTHHmmss')}%2F${moment((fixture.timestamp + TWO_HOURS) * 1000).tz('Europe/London').format('YYYYMMDDTHHmmss')}\
 			&location=${MAPS_LOCATION}`;
 }
 
