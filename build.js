@@ -10,7 +10,7 @@ const TEMPLATE = './template.ejs';
 const OUTPUT_FILE = './build/index.html';
 const MAPS_LOCATION = 'Old Trafford, Sir Matt Busby Way, Old Trafford, Stretford, Manchester M16 0RA, UK'
 
-const URL = 'https://api-football-v1.p.rapidapi.com/v3/fixtures?season=2021&team=33&next=20';
+const URL = 'https://api-football-v1.p.rapidapi.com/v3/fixtures?team=33&next=99&status=NS';
 const headers = {
 	'x-rapidapi-key': process.env.API_KEY,
 	'x-rapidapi-host': 'api-football-v1.p.rapidapi.com'
